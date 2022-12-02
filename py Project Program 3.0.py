@@ -33,6 +33,9 @@ def rect():
 def erase():
     t.pencolor("white")
     t.pensize(50)
+    
+def undo():
+    t.undo()
 
 def sFill():
     t.fillcolor(b)
@@ -71,6 +74,7 @@ def main():
     turtle.onscreenclick(clickRight)
 
     buttonMaker("Pick Color", changeColor)
+    buttonMaker("Undo", undo)
     buttonMaker("Clear", clear)
     buttonMaker("Erase", erase)
     buttonMaker("Triangle", triangle)
