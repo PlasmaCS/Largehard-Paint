@@ -28,11 +28,11 @@ def changeColor():
 def triangle():
     for i in range(3):
         t.fd(100)
-        t.rt(120)
+        t.lt(120)
 def rect():
     for i in range(4):
         t.fd(100)
-        t.rt(90)
+        t.lt(90)
 
 def erase():
     t.pencolor("white")
