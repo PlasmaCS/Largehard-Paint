@@ -21,7 +21,7 @@ f = DISABLED
 
 def changeColor():
     global b
-    a,b = askcolor(title="Choose Color")
+    a,b = askcolor(title = "Choose Your Fighter")
     t.pencolor(b)
     t.pensize(10)
 
@@ -79,22 +79,16 @@ def main():
     t.ondrag(drawing)
     turtle.onscreenclick(clickRight)
 
-    pc = buttonMaker("Pick Color", changeColor, NORMAL).pack()
-    u = buttonMaker("Undo", undo, NORMAL).pack()
-    c = buttonMaker("Clear", clear, NORMAL).pack()
-    e = buttonMaker("Erase", erase, NORMAL).pack()
-    ti = buttonMaker("Triangle", triangle, NORMAL).pack()
-    r = buttonMaker("Rectangle", rect, NORMAL).pack()
-    sf = buttonMaker("Start Fill", sFill, NORMAL).pack()
-    ef = buttonMaker("End Fill", eFill, DISABLED)
-    if f == NORMAL:
-        print("a")
-        ef['state'] = NORMAL
-        ef.pack()
-    else:
-        print("a")
-        ef['state'] = DISABLED
-        ef.pack()
+    changeColor()
+
+    buttonMaker("Pick Color", changeColor, NORMAL).pack()
+    buttonMaker("Undo", undo, NORMAL).pack()
+    buttonMaker("Clear", clear, NORMAL).pack()
+    buttonMaker("Erase", erase, NORMAL).pack()
+    buttonMaker("Triangle", triangle, NORMAL).pack()
+    buttonMaker("Rectangle", rect, NORMAL).pack()
+    buttonMaker("Start Fill", sFill, NORMAL).pack()
+    buttonMaker("End Fill", eFill, DISABLED).pack
 
     screen.mainloop()
 
