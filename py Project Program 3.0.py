@@ -49,6 +49,7 @@ def clear():
 def undo():
 	for i in range(10):
 		t.undo()
+	t.pensize(10)
 		
 def drawing(x, y):
 	t.ondrag(None)
