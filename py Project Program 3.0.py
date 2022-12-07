@@ -5,92 +5,80 @@ Date: 11/29/2022
 """
 
 import turtle
-from tkinter import *
 from turtle import Turtle, Screen
-from tkinter import ttk
 from tkinter.colorchooser import askcolor
+from tkinter import *
 
 screen = Screen()
 canvas = screen.getcanvas()
 canvas.create_window(-200, -200)
 t = Turtle()
-t.speed(-1)
-t.pensize(10)
 b = "black"
-f = DISABLED
 
 def changeColor():
-    global b
-    a,b = askcolor(title = "Choose Your Fighter")
-    t.pencolor(b)
-    t.pensize(10)
+	global b
+	a,b = askcolor(title = "Choose Color")
+	t.pencolor(b)
+	t.pensize(10)
 
 def triangle():
-    for i in range(3):
-        t.fd(100)
-        t.lt(120)
+	for i in range(3):
+		t.fd(100)
+		t.rt(120)
 def rect():
-    for i in range(4):
-        t.fd(100)
-        t.lt(90)
+	for i in range(4):
+		t.fd(100)
+		t.rt(90)
 
 def erase():
-    t.pencolor("white")
-    t.pensize(50)
+	t.pencolor("white")
+	t.pensize(50)
 
 def sFill():
-    global f
-    f = NORMAL
-    t.fillcolor(b)
-    t.begin_fill()
+	t.fillcolor(b)
+	t.begin_fill()
 
 def eFill():
-    global f
-    f = DISABLED
-    t.end_fill()
-    t.fillcolor("black")
-    t.pencolor(b)
-
-def undo():
-    for i in range(10):
-        t.undo()
-    t.pensize(10)
+	t.end_fill()
+	t.fillcolor("black")
+	t.pencolor(b)
 
 def clear():
-    t.clear()
+	t.clear()
 
 def drawing(x, y):
-    t.ondrag(None)
-    t.setheading(t.towards(x, y))
-    t.goto(x, y)
-    t.ondrag(drawing)
+	t.ondrag(None)
+	t.setheading(t.towards(x, y))
+	t.goto(x, y)
+	t.ondrag(drawing)
 
 def clickRight(x, y):
-    t.pu()
-    t.goto(x, y)
-    t.pd()
+	t.pu()
+	t.goto(x, y)
+	t.pd()
 
-def buttonMaker(text, cmd, dis):
-    return ttk.Button(canvas.master, text = text, state = dis, command = cmd)
-    
+def buttonMaker(text, cmd):
+	Button(canvas.master, text = text, background = "white", command = cmd).pack(side=LEFT)
+
 def main():
-    turtle.listen()
+	turtle.listen()
 
-    t.ondrag(drawing)
-    turtle.onscreenclick(clickRight)
+	t.speed(-1)
+	t.pensize(10)
 
-    changeColor()
+	t.ondrag(drawing)
+	turtle.onscreenclick(clickRight)
 
-    buttonMaker("Pick Color", changeColor, NORMAL).pack()
-    buttonMaker("Undo", undo, NORMAL).pack()
-    buttonMaker("Clear", clear, NORMAL).pack()
-    buttonMaker("Erase", erase, NORMAL).pack()
-    buttonMaker("Triangle", triangle, NORMAL).pack()
-    buttonMaker("Rectangle", rect, NORMAL).pack()
-    buttonMaker("Start Fill", sFill, NORMAL).pack()
-    buttonMaker("End Fill", eFill, DISABLED).pack
+	Label(canvas.master).pack(side=LEFT, padx=150)
+	buttonMaker("Pick Color", changeColor)
+	buttonMaker("Clear", clear)
+	buttonMaker("Erase", erase)
+	buttonMaker("Triangle", triangle)
+	buttonMaker("Rectangle", rect)
+	buttonMaker("Start Fill", sFill)
+	buttonMaker("End Fill", eFill)
 
-    screen.mainloop()
+	screen.mainloop()
 
 if __name__ == "__main__":
-    main()
+	main()
