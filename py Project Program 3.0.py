@@ -45,14 +45,18 @@ def eFill():
 
 def clear():
 	t.clear()
-
+	
+def undo():
+	for i in range(10):
+		t.undo()
+		
 def drawing(x, y):
 	t.ondrag(None)
 	t.setheading(t.towards(x, y))
 	t.goto(x, y)
 	t.ondrag(drawing)
 
-def clickRight(x, y):
+def clickMove(x, y):
 	t.pu()
 	t.goto(x, y)
 	t.pd()
@@ -67,11 +71,12 @@ def main():
 	t.pensize(10)
 
 	t.ondrag(drawing)
-	turtle.onscreenclick(clickRight)
+	turtle.onscreenclick(clickMove)
 
-	Label(canvas.master).pack(side=LEFT, padx=150)
+	Label(canvas.master).pack(side=LEFT, padx=125)
 	buttonMaker("Pick Color", changeColor)
 	buttonMaker("Clear", clear)
+	buttonMaker("Undo", undo)
 	buttonMaker("Erase", erase)
 	buttonMaker("Triangle", triangle)
 	buttonMaker("Rectangle", rect)
