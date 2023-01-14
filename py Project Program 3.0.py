@@ -1,6 +1,6 @@
 """
 Project Program
-Name: Andrew Barbarini, Eric Davis, Bradyn Weatherwax
+Name: Andrew Barbarini, Bradyn Weatherwax
 Date: 11/29/2022
 """
 
